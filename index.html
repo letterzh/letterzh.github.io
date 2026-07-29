@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ======== EDIT ME: page title ======== -->
+<title>worldmachine.exist — about me</title>
+
+<meta name="description" content="personal about me page" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- animated background -->
+<div class="bg">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="grid-overlay"></div>
+</div>
+<canvas id="stars"></canvas>
+
+<main class="wrap">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero reveal">
+    <div class="avatar-ring">
+      <!-- EDIT ME: replace with your own image (local file or URL) -->
+      <img class="avatar" src="https://api.dicebear.com/9.x/thumbs/svg?seed=worldmachine" alt="avatar" />
+    </div>
+
+    <!-- ======== EDIT ME: your name / nickname ======== -->
+    <h1 class="name">worldmachine</h1>
+
+    <!-- ======== EDIT ME: short tagline ======== -->
+    <p class="tagline">
+      <span class="typed" data-words="developer|dreamer|problem solver|human being"></span><span class="caret">▌</span>
+    </p>
+
+    <!-- ======== EDIT ME: tags about you ======== -->
+    <div class="chips">
+      <span class="chip">🌍 Earth</span>
+      <span class="chip">💻 Code</span>
+      <span class="chip">🎧 Music</span>
+      <span class="chip">🎮 Games</span>
+    </div>
+
+    <a href="#about" class="scroll-hint" aria-label="scroll down">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ============================================================
+       ABOUT  ← WRITE YOUR TEXT HERE
+       ============================================================ -->
+  <section class="card reveal" id="about">
+    <h2 class="section-title"><span class="dot"></span>about me</h2>
+
+    <!-- ======== EDIT ME: everything inside this div ======== -->
+    <div class="prose">
+      <p>
+        Hey! I'm <strong>worldmachine</strong>. This paragraph is a placeholder —
+        replace it with whatever you want people to know about you.
+      </p>
+      <p>
+        Talk about what you do, what you're learning, what you love.
+        Keep it two or three short paragraphs and it'll look great.
+      </p>
+    </div>
+    <!-- ======== END EDIT ME ======== -->
+
+    <!-- ======== EDIT ME: quick facts (add / remove rows freely) ======== -->
+    <div class="facts">
+      <div class="fact"><span class="k">age</span><span class="v">??</span></div>
+      <div class="fact"><span class="k">from</span><span class="v">somewhere</span></div>
+      <div class="fact"><span class="k">speaks</span><span class="v">English</span></div>
+      <div class="fact"><span class="k">timezone</span><span class="v">UTC+0</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DISCORD WIDGET  (live, powered by Lanyard)
+       ============================================================ -->
+  <section class="card reveal">
+    <h2 class="section-title"><span class="dot"></span>discord</h2>
+
+    <div class="discord-card" id="discord">
+      <div class="dc-loading">
+        <div class="spinner"></div>
+        <span>connecting to discord…</span>
+      </div>
+    </div>
+
+    <p class="hint" id="discord-hint" hidden></p>
+  </section>
+
+  <!-- ============================================================
+       SKILLS / INTERESTS
+       ============================================================ -->
+  <section class="card reveal">
+    <h2 class="section-title"><span class="dot"></span>things i do</h2>
+
+    <!-- ======== EDIT ME: skill name + percentage (0-100) ======== -->
+    <div class="skills">
+      <div class="skill" data-level="90"><span>JavaScript</span><div class="bar"><i></i></div></div>
+      <div class="skill" data-level="75"><span>Python</span><div class="bar"><i></i></div></div>
+      <div class="skill" data-level="60"><span>Design</span><div class="bar"><i></i></div></div>
+      <div class="skill" data-level="45"><span>Rust</span><div class="bar"><i></i></div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LINKS
+       ============================================================ -->
+  <section class="card reveal">
+    <h2 class="section-title"><span class="dot"></span>find me</h2>
+
+    <!-- ======== EDIT ME: your real links (delete unused ones) ======== -->
+    <div class="links">
+      <a class="link" href="https://discord.com/users/1142164320772444281" target="_blank" rel="noopener">
+        <span class="li">🗨️</span>
+        <span class="lt"><b>Discord</b><small>worldmachine.exist</small></span>
+      </a>
+      <a class="link" href="#" target="_blank" rel="noopener">
+        <span class="li">🐙</span>
+        <span class="lt"><b>GitHub</b><small>letterzh</small></span>
+      </a>
+      <a class="link" href="#" target="_blank" rel="noopener">
+        <span class="li">📮</span>
+        <span class="lt"><b>Telegram</b><small>@dan1elbttw</small></span>
+      </a>
+      <a class="link" href="mailto:letter@protogen.name">
+        <span class="li">✉️</span>
+        <span class="lt"><b>Email</b><small>letter@protogen.name</small></span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <!-- ======== EDIT ME: footer ======== -->
+    <p>made with ♥ by worldmachine · <span id="year"></span></p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
