@@ -1,13 +1,9 @@
 /* =================================================================
-   CONFIG  ←←←  THE ONLY THING YOU *MUST* CHANGE
+   CONFIG
    ================================================================= */
 const CONFIG = {
-  // 1) Your Discord user ID (18-19 digits). NOT the username.
-  //    Discord → Settings → Advanced → enable Developer Mode,
-  //    then right-click your avatar → "Copy User ID".
   DISCORD_ID: "1142164320772444281",
 
-  // 2) Fallback shown if Lanyard can't see you (see hint under widget)
   DISCORD_USERNAME: "worldmachine.exist",
 };
 /* ================================================================= */
