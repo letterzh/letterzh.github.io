@@ -1,0 +1,353 @@
+:root {
+    --bg-color: #0f1115;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aabf;
+    --accent-1: #6366f1;
+    --accent-2: #ec4899;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Animated Background */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(315deg, #0f1115 0%, #17102e 50%, #060b24 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.cube {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    animation: cubeFloat 12s infinite linear;
+    border-radius: 12px;
+}
+
+.cube:nth-child(1) { top: 20%; left: 10%; width: 120px; height: 120px; animation-duration: 15s; }
+.cube:nth-child(2) { top: 70%; left: 80%; width: 60px; height: 60px; animation-duration: 10s; animation-delay: 2s; }
+.cube:nth-child(3) { top: 40%; left: 60%; width: 90px; height: 90px; animation-duration: 18s; animation-delay: 1s; }
+.cube:nth-child(4) { top: 80%; left: 20%; width: 70px; height: 70px; animation-duration: 14s; animation-delay: 4s; }
+.cube:nth-child(5) { top: 10%; left: 70%; width: 100px; height: 100px; animation-duration: 16s; animation-delay: 3s; }
+.cube:nth-child(6) { top: 50%; left: 30%; width: 50px; height: 50px; animation-duration: 11s; animation-delay: 5s; }
+
+@keyframes cubeFloat {
+    0% { transform: scale(0) rotate(0deg) translateY(0); opacity: 1; }
+    100% { transform: scale(2) rotate(360deg) translateY(-200px); opacity: 0; }
+}
+
+/* Glassmorphism Utility */
+.glassmorphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+/* Typography & Colors */
+.gradient-text {
+    background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-2);
+}
+
+/* Sections */
+section {
+    min-height: 100vh;
+    padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+    color: white;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(236, 72, 153, 0.4);
+}
+
+/* Discord Card Improved */
+.discord-card {
+    width: 350px;
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.1s ease;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    background: rgba(15, 17, 21, 0.7);
+}
+
+.discord-banner {
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background-size: 200% 200%;
+    animation: bannerFlow 5s ease infinite;
+}
+
+@keyframes bannerFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.discord-profile {
+    display: flex;
+    padding: 0 20px;
+    margin-top: -45px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    padding: 6px;
+}
+
+.discord-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status-indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    border: 3px solid var(--bg-color);
+}
+
+.online { background-color: #43b581; }
+.idle { background-color: #faa61a; }
+.dnd { background-color: #f04747; }
+.offline { background-color: #747f8d; }
+
+.discord-header-info {
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.discord-header-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.discord-header-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.discord-body {
+    padding: 0 20px 25px 20px;
+}
+
+.discord-badges {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+}
+
+.discord-badge {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.discord-bio {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    white-space: pre-wrap; /* Preserves line breaks from discord bio */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.discord-activity-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.activity-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.activity-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Projects Section */
+.projects-section h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 150px;
+    }
+    
+    .hero-content p {
+        margin: 0 auto 40px auto;
+    }
+}

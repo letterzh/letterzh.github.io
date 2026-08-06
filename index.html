@@ -1,118 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>letter — about me</title>
-
-<meta name="description" content="personal about me page" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <meta name="description" content="Awesome Portfolio with Discord Status">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="bg">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="grid-overlay"></div>
-</div>
-<canvas id="stars"></canvas>
-
-<a class="tty-switch" href="tty.html" title="lightweight terminal version for slow devices">
-  <span class="tty-ico">&gt;_</span> tty version
-</a>
-
-<main class="wrap">
-  <section class="hero reveal">
-    <div class="avatar-ring">
-      <!-- EDIT ME: replace with your own image (local file or URL) -->
-      <img class="avatar" src="IMG_0119.jpg" alt="letter's avatar" />
-    </div>
-    <h1 class="name">letter</h1>
-    <p class="tagline">
-      <span class="typed" data-words="developer|dreamer|problem solver|human being"></span><span class="caret">▌</span>
-    </p>
-    <div class="chips">
-      <span class="chip">🌍 Earth</span>
-      <span class="chip">💻 Code</span>
-      <span class="chip">🎧 Music</span>
-      <span class="chip">🎮 Games</span>
+    <div class="animated-bg">
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
     </div>
 
-    <a href="#about" class="scroll-hint" aria-label="scroll down">
-      <span></span>
-    </a>
-  </section>
-  <section class="card reveal" id="about">
-    <h2 class="section-title"><span class="dot"></span>about me</h2>
-    <div class="prose">
-      <p>
-        Hey! I'm <strong>letter</strong>. Love doing anything, trying to learn C++,
-        You can always write me, my contact info will be down there
-      </p>
-    </div>
-    <div class="facts">
-      <div class="fact"><span class="k">age</span><span class="v">14</span></div>
-      <div class="fact"><span class="k">from</span><span class="v">somewhere</span></div>
-      <div class="fact"><span class="k">speaks</span><span class="v">English, Russian</span></div>
-      <div class="fact"><span class="k">timezone</span><span class="v">UTC+3</span></div>
-    </div>
-  </section>
-  <section class="card reveal">
-    <h2 class="section-title"><span class="dot"></span>discord</h2>
+    <nav class="navbar glassmorphism">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="discord-card" id="discord">
-      <div class="dc-loading">
-        <div class="spinner"></div>
-        <span>connecting to discord…</span>
-      </div>
-    </div>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content" data-tilt>
+                <h1>Hello, I'm a <span class="gradient-text">Developer</span></h1>
+                <p>Building beautiful and dynamic web experiences.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn primary-btn">View Work</a>
+                </div>
+            </div>
+            
+            <div class="discord-card glassmorphism" data-tilt>
+                <div class="discord-banner" id="discord-banner"></div>
+                <div class="discord-profile">
+                    <div class="avatar-wrapper">
+                        <img id="discord-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar" class="discord-avatar">
+                        <div id="discord-status-indicator" class="status-indicator offline"></div>
+                    </div>
+                    <div class="discord-header-info">
+                        <h3 id="discord-global-name">Loading...</h3>
+                        <p id="discord-username">@loading</p>
+                        <div id="discord-badges" class="discord-badges"></div>
+                    </div>
+                </div>
+                <div class="discord-body">
+                    <div class="discord-bio" id="discord-bio"></div>
+                    <div class="discord-activity-box">
+                        <h4 class="activity-label" id="activity-label">ABOUT ME</h4>
+                        <p id="discord-activity" class="activity-text">Fetching status...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <p class="hint" id="discord-hint" hidden></p>
-  </section>
-  <section class="card reveal">
-    <h2 class="section-title"><span class="dot"></span>things i do</h2>
+        <section id="projects" class="projects-section">
+            <h2>Featured <span class="gradient-text">Projects</span></h2>
+            <div class="projects-grid">
+                <!-- Project Cards -->
+                <div class="project-card glassmorphism" data-tilt>
+                    <div class="project-image" style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4)"></div>
+                    <h3>Project One</h3>
+                    <p>An amazing web application built with modern technologies.</p>
+                </div>
+                <div class="project-card glassmorphism" data-tilt>
+                    <div class="project-image" style="background: linear-gradient(45deg, #A8E6CF, #DCEDC1)"></div>
+                    <h3>Project Two</h3>
+                    <p>A beautiful user interface with smooth micro-interactions.</p>
+                </div>
+                <div class="project-card glassmorphism" data-tilt>
+                    <div class="project-image" style="background: linear-gradient(45deg, #FFD3B6, #FFAAA5)"></div>
+                    <h3>Project Three</h3>
+                    <p>Complex logic wrapped in a stunning visual design.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- ======== EDIT ME: skill name + percentage (0-100) ======== -->
-    <div class="skills">
-      <div class="skill" data-level="90"><span>JavaScript</span><div class="bar"><i></i></div></div>
-      <div class="skill" data-level="75"><span>Python</span><div class="bar"><i></i></div></div>
-      <div class="skill" data-level="60"><span>Design</span><div class="bar"><i></i></div></div>
-      <div class="skill" data-level="45"><span>Rust</span><div class="bar"><i></i></div></div>
-    </div>
-  </section>
-  <section class="card reveal">
-    <h2 class="section-title"><span class="dot"></span>find me</h2>
-    <div class="links">
-      <a class="link" href="https://discord.com/users/1142164320772444281" target="_blank" rel="noopener">
-        <span class="li">🗨️</span>
-        <span class="lt"><b>Discord</b><small>worldmachine.exist</small></span>
-      </a>
-      <a class="link" href="#" target="_blank" rel="noopener">
-        <span class="li">🐙</span>
-        <span class="lt"><b>GitHub</b><small>letterzh</small></span>
-      </a>
-      <a class="link" href="#" target="_blank" rel="noopener">
-        <span class="li">📮</span>
-        <span class="lt"><b>Telegram</b><small>@dan1elbttw</small></span>
-      </a>
-      <a class="link" href="mailto:letter@protogen.name">
-        <span class="li">✉️</span>
-        <span class="lt"><b>Email</b><small>letter@protogen.name</small></span>
-      </a>
-    </div>
-  </section>
-
-  <footer class="reveal">
-    <p>made with ♥ by letter · <span id="year"></span></p>
-  </footer>
-
-</main>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
