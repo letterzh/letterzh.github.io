@@ -281,6 +281,14 @@ section {
     white-space: pre-wrap; /* Preserves line breaks from discord bio */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 15px;
+    line-height: 1.4;
+}
+
+.discord-custom-emoji {
+    width: 22px;
+    height: 22px;
+    vertical-align: text-bottom;
+    display: inline-block;
 }
 
 .discord-activity-box {

@@ -69,9 +69,19 @@ function updateDiscordCard(data) {
         bannerEl.style.backgroundPosition = 'center';
     }
 
+    // Helper to format custom emojis in text (like bio)
+    function formatCustomEmojis(text) {
+        if (!text) return '';
+        // regex to match <a:name:id> or <:name:id>
+        return text.replace(/<(a?):([a-zA-Z0-9_]+):([0-9]+)>/g, (match, animated, name, id) => {
+            const ext = animated === 'a' ? 'gif' : 'png';
+            return `<img src="https://cdn.discordapp.com/emojis/${id}.${ext}" alt="${name}" class="discord-custom-emoji">`;
+        });
+    }
+
     // Update Bio
     if (data.discord_user.bio) {
-        bioEl.textContent = data.discord_user.bio;
+        bioEl.innerHTML = formatCustomEmojis(data.discord_user.bio);
         bioEl.style.display = 'block';
     } else {
         bioEl.style.display = 'none';
@@ -94,7 +104,7 @@ function updateDiscordCard(data) {
     statusIndicator.className = 'status-indicator ' + data.discord_status;
 
     // Update Activity
-    let activityText = 'Just chilling and coding.';
+    let activityHTML = 'Just chilling and coding.';
     let activityTitle = 'ABOUT ME';
     
     if (data.activities && data.activities.length > 0) {
@@ -102,25 +112,33 @@ function updateDiscordCard(data) {
         
         if (primaryActivity.type === 0) {
             activityTitle = 'PLAYING A GAME';
-            activityText = primaryActivity.name;
-            if (primaryActivity.details) activityText += `\n${primaryActivity.details}`;
+            activityHTML = primaryActivity.name;
+            if (primaryActivity.details) activityHTML += `<br>${primaryActivity.details}`;
         } else if (primaryActivity.type === 2) {
             activityTitle = 'LISTENING TO SPOTIFY';
-            activityText = `${primaryActivity.details} by ${primaryActivity.state}`;
+            activityHTML = `${primaryActivity.details} by ${primaryActivity.state}`;
         } else if (primaryActivity.type === 4) {
             activityTitle = 'CUSTOM STATUS';
-            activityText = primaryActivity.state || 'Custom Status';
-            if (primaryActivity.emoji && primaryActivity.emoji.name) {
-                activityText = primaryActivity.emoji.name + ' ' + activityText;
+            let statusText = primaryActivity.state || '';
+            let emojiHTML = '';
+            
+            if (primaryActivity.emoji) {
+                if (primaryActivity.emoji.id) {
+                    const ext = primaryActivity.emoji.animated ? 'gif' : 'png';
+                    emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${primaryActivity.emoji.id}.${ext}" alt="${primaryActivity.emoji.name}" class="discord-custom-emoji"> `;
+                } else if (primaryActivity.emoji.name) {
+                    emojiHTML = primaryActivity.emoji.name + ' ';
+                }
             }
+            activityHTML = emojiHTML + statusText;
         } else {
             activityTitle = 'DOING SOMETHING';
-            activityText = primaryActivity.name;
+            activityHTML = primaryActivity.name;
         }
     }
     
     activityLabel.textContent = activityTitle;
-    activityEl.innerText = activityText;
+    activityEl.innerHTML = activityHTML;
 }
 
 // Fetch initially and then set interval
