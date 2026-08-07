@@ -103,42 +103,73 @@ function updateDiscordCard(data) {
     // Update Status Color
     statusIndicator.className = 'status-indicator ' + data.discord_status;
 
-    // Update Activity
-    let activityHTML = 'Just chilling and coding.';
-    let activityTitle = 'ABOUT ME';
+    // Update Activities
+    const activitiesContainer = document.getElementById('discord-activities-container');
+    activitiesContainer.innerHTML = '';
     
     if (data.activities && data.activities.length > 0) {
-        const primaryActivity = data.activities[0];
-        
-        if (primaryActivity.type === 0) {
-            activityTitle = 'PLAYING A GAME';
-            activityHTML = primaryActivity.name;
-            if (primaryActivity.details) activityHTML += `<br>${primaryActivity.details}`;
-        } else if (primaryActivity.type === 2) {
-            activityTitle = 'LISTENING TO SPOTIFY';
-            activityHTML = `${primaryActivity.details} by ${primaryActivity.state}`;
-        } else if (primaryActivity.type === 4) {
-            activityTitle = 'CUSTOM STATUS';
-            let statusText = primaryActivity.state || '';
-            let emojiHTML = '';
+        data.activities.forEach(activity => {
+            const box = document.createElement('div');
+            box.className = 'discord-activity-box';
+            let html = '';
             
-            if (primaryActivity.emoji) {
-                if (primaryActivity.emoji.id) {
-                    const ext = primaryActivity.emoji.animated ? 'gif' : 'png';
-                    emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${primaryActivity.emoji.id}.${ext}" alt="${primaryActivity.emoji.name}" class="discord-custom-emoji"> `;
-                } else if (primaryActivity.emoji.name) {
-                    emojiHTML = primaryActivity.emoji.name + ' ';
+            if (activity.type === 4) {
+                // Custom Status
+                let emojiHTML = '';
+                if (activity.emoji) {
+                    if (activity.emoji.id) {
+                        const ext = activity.emoji.animated ? 'gif' : 'png';
+                        emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${activity.emoji.id}.${ext}" alt="${activity.emoji.name}" class="discord-custom-emoji"> `;
+                    } else if (activity.emoji.name) {
+                        emojiHTML = activity.emoji.name + ' ';
+                    }
                 }
+                html = `<div style="font-weight:600; font-size:0.95rem;">${emojiHTML}${activity.state || ''}</div>`;
+            } else if (activity.type === 2 || activity.id === "spotify:1") {
+                // Spotify
+                const spotify = data.spotify;
+                if (spotify) {
+                    html = `
+                    <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px;">LISTENING TO SPOTIFY</h4>
+                    <div class="activity-rich">
+                        <img src="${spotify.album_art_url}" class="activity-image" alt="Album Art">
+                        <div class="activity-details">
+                            <span class="activity-name">${spotify.song}</span>
+                            <span>by ${spotify.artist}</span>
+                        </div>
+                    </div>`;
+                }
+            } else if (activity.type === 0) {
+                // Playing Game
+                let imageUrl = '';
+                if (activity.assets && activity.assets.large_image) {
+                    let assetId = activity.assets.large_image;
+                    if (assetId.startsWith('mp:external/')) {
+                        imageUrl = 'https://media.discordapp.net/external/' + assetId.replace('mp:external/', '');
+                    } else {
+                        imageUrl = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${assetId}.png`;
+                    }
+                }
+                
+                let imgHtml = imageUrl ? `<img src="${imageUrl}" class="activity-image" alt="Game Art">` : '';
+                html = `
+                <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px;">PLAYING A GAME</h4>
+                <div class="activity-rich">
+                    ${imgHtml}
+                    <div class="activity-details">
+                        <span class="activity-name">${activity.name}</span>
+                        ${activity.details ? `<span>${activity.details}</span>` : ''}
+                        ${activity.state ? `<span>${activity.state}</span>` : ''}
+                    </div>
+                </div>`;
             }
-            activityHTML = emojiHTML + statusText;
-        } else {
-            activityTitle = 'DOING SOMETHING';
-            activityHTML = primaryActivity.name;
-        }
+            
+            if (html) {
+                box.innerHTML = html;
+                activitiesContainer.appendChild(box);
+            }
+        });
     }
-    
-    activityLabel.textContent = activityTitle;
-    activityEl.innerHTML = activityHTML;
 }
 
 // Fetch initially and then set interval

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>letter</title>
-    <meta name="description" content="Awesome "Portfolio" with Discord Status">
+    <title>My Portfolio</title>
+    <meta name="description" content="Awesome Portfolio with Discord Status">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -21,15 +21,24 @@
     </div>
 
     <nav class="navbar glassmorphism">
-        <div class="logo">letter</div>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <main>
         <section id="home" class="hero-section">
             <div class="hero-content" data-tilt>
-                <h1>Hello, I'm a <span class="gradient-text">letter</span></h1>
-                <p>cheeseburger.</p>
+                <h1>Hello, I'm a <span class="gradient-text">Developer</span></h1>
+                <p>Building beautiful and dynamic web experiences.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn primary-btn">View Work</a>
+                </div>
             </div>
+            
             <div class="discord-card glassmorphism" data-tilt>
                 <div class="discord-banner" id="discord-banner"></div>
                 <div class="discord-profile">
@@ -45,10 +54,34 @@
                 </div>
                 <div class="discord-body">
                     <div class="discord-bio" id="discord-bio"></div>
-                    <div class="discord-activity-box">
-                        <h4 class="activity-label" id="activity-label">ABOUT ME</h4>
-                        <p id="discord-activity" class="activity-text">Fetching status...</p>
+                    <div id="discord-activities-container">
+                        <div class="discord-activity-box">
+                            <h4 class="activity-label">ACTIVITY</h4>
+                            <p class="activity-text">Fetching status...</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Featured <span class="gradient-text">Projects</span></h2>
+            <div class="projects-grid">
+                <!-- Project Cards -->
+                <div class="project-card glassmorphism" data-tilt>
+                    <div class="project-image" style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4)"></div>
+                    <h3>Project One</h3>
+                    <p>An amazing web application built with modern technologies.</p>
+                </div>
+                <div class="project-card glassmorphism" data-tilt>
+                    <div class="project-image" style="background: linear-gradient(45deg, #A8E6CF, #DCEDC1)"></div>
+                    <h3>Project Two</h3>
+                    <p>A beautiful user interface with smooth micro-interactions.</p>
+                </div>
+                <div class="project-card glassmorphism" data-tilt>
+                    <div class="project-image" style="background: linear-gradient(45deg, #FFD3B6, #FFAAA5)"></div>
+                    <h3>Project Three</h3>
+                    <p>Complex logic wrapped in a stunning visual design.</p>
                 </div>
             </div>
         </section>
