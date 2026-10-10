@@ -18,8 +18,8 @@
             <section class="hero-section" style="min-height: calc(100vh - 150px);">
                 <div class="hero-copy">
                     <p class="eyebrow">Ошибка 404</p>
-                    <h1>Кажется,<br><span>ты проебался</span></h1>
-                    <p class="hero-lead">Такого адреса здесь нет. Вернёмся туда, где всё на месте?</p>
+                    <h1>Кажется,<br><span>ты проебался.</span></h1>
+                    <p class="hero-lead">Но где?</p>
                     <div class="hero-actions"><a class="button button-primary" href="index.html">Вернуться на главную <span aria-hidden="true">→</span></a></div>
                     <p class="hero-lead" id="redirect-note" aria-live="polite">Автопереход через 8 секунд.</p>
                 </div>
@@ -36,7 +36,7 @@
             seconds -= 1;
             if (seconds <= 0) {
                 clearInterval(timer);
-                window.location.replace('index.html');
+                window.location.replace('/');
                 return;
             }
             note.textContent = `Автопереход через ${seconds} секунд.`;
