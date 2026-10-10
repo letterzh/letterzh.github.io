@@ -15,7 +15,7 @@ async function fetchDiscordStatus() {
         try {
             profileData = await profileRes.json();
         } catch(e) {
-            console.log("Could not fetch dcdn profile");
+            console.log("Не удалось получить профиль Discord");
         }
 
         if (data.success) {
@@ -31,7 +31,10 @@ async function fetchDiscordStatus() {
         }
     } catch (error) {
         console.error('Error fetching Discord status:', error);
-        document.getElementById('discord-activity').textContent = 'Unable to fetch status.';
+        const activitiesContainer = document.getElementById('discord-activities-container');
+        if (activitiesContainer) {
+            activitiesContainer.innerHTML = '<div class="discord-activity-box"><p class="activity-text">Не удалось получить статус прямо сейчас.</p></div>';
+        }
     }
 }
 
@@ -130,7 +133,7 @@ function updateDiscordCard(data) {
                 const spotify = data.spotify;
                 if (spotify) {
                     html = `
-                    <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px;">LISTENING TO SPOTIFY</h4>
+                    <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px;">СЛУШАЕТ SPOTIFY</h4>
                     <div class="activity-rich">
                         <img src="${spotify.album_art_url}" class="activity-image" alt="Album Art">
                         <div class="activity-details">
@@ -153,7 +156,7 @@ function updateDiscordCard(data) {
                 
                 let imgHtml = imageUrl ? `<img src="${imageUrl}" class="activity-image" alt="Game Art">` : '';
                 html = `
-                <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px;">PLAYING A GAME</h4>
+                <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px;">ИГРАЕТ</h4>
                 <div class="activity-rich">
                     ${imgHtml}
                     <div class="activity-details">

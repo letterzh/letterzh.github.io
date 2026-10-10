@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Страница не найдена</title>
+    <meta name="description" content="Запрошенная страница не найдена.">
+    <meta name="theme-color" content="#0b0e17">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html" aria-label="На главную"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name"><s>microsoft</s> microslop</span></a>
+            <a class="header-link" href="index.html">На главную <span aria-hidden="true">→</span></a>
+        </header>
+        <main>
+            <section class="hero-section" style="min-height: calc(100vh - 150px);">
+                <div class="hero-copy">
+                    <p class="eyebrow">Ошибка 404</p>
+                    <h1>Кажется,<br><span>ты проебался</span></h1>
+                    <p class="hero-lead">Такого адреса здесь нет. Вернёмся туда, где всё на месте?</p>
+                    <div class="hero-actions"><a class="button button-primary" href="index.html">Вернуться на главную <span aria-hidden="true">→</span></a></div>
+                    <p class="hero-lead" id="redirect-note" aria-live="polite">Автопереход через 8 секунд.</p>
+                </div>
+                <div class="hero-art" aria-hidden="true"><div class="art-window"><div class="window-bar"><span></span><span></span><span></span></div><div class="window-content"><b>404</b><br><span>page.find();</span><br><em>status: missing</em></div></div><div class="art-square square-blue"></div><div class="art-square square-yellow"></div><div class="art-square square-red"></div></div>
+            </section>
+        </main>
+        <footer><span>© <span id="footer-year"></span> letter</span><span>Сделано с интересом к деталям</span></footer>
+    </div>
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+        let seconds = 8;
+        const note = document.getElementById('redirect-note');
+        const timer = setInterval(() => {
+            seconds -= 1;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.replace('index.html');
+                return;
+            }
+            note.textContent = `Автопереход через ${seconds} секунд.`;
+        }, 1000);
+    </script>
+</body>
+</html>
